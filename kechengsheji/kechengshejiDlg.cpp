@@ -7,6 +7,11 @@
 #include "kechengsheji.h"
 #include "kechengshejiDlg.h"
 #include "afxdialogex.h"
+#include "CSerialPort/SerialPort.h"
+#include "CSerialPort/SerialPortInfo.h"
+#include "sigslot.h"
+using namespace itas109;
+using namespace sigslot;
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -52,6 +57,7 @@ END_MESSAGE_MAP()
 
 CkechengshejiDlg::CkechengshejiDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_KECHENGSHEJI_DIALOG, pParent)
+	, PortID(_T(""))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -59,12 +65,15 @@ CkechengshejiDlg::CkechengshejiDlg(CWnd* pParent /*=nullptr*/)
 void CkechengshejiDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_CBString(pDX, IDC_COMBO1, PortID);
 }
 
 BEGIN_MESSAGE_MAP(CkechengshejiDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_BUTTON1, &CkechengshejiDlg::OnBnClickedButton1)
+	ON_CBN_SELCHANGE(IDC_COMBO1, &CkechengshejiDlg::OnCbnSelchangeCombo1)
 END_MESSAGE_MAP()
 
 
@@ -151,5 +160,23 @@ void CkechengshejiDlg::OnPaint()
 HCURSOR CkechengshejiDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
+}
+
+
+
+void CkechengshejiDlg::OnBnClickedButton1()
+{
+	// TODO: 在此添加控件通知处理程序代码
+
+	m_serialPort.init(PortID);
+	m_serialPort.open();
+	if (m_serialPort.isOpen())
+	{
+		MessageBox(_T("串口打开成功"));
+	}
+	else
+	{
+		MessageBox(_T("串口打开失败，请检查是否被占用或未开启串口虚拟软件"));
+	}
 }
 

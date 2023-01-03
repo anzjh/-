@@ -36,6 +36,12 @@
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="csv.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="sigslot.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="kechengsheji.cpp">
