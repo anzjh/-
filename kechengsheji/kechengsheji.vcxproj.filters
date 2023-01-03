@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="CSerialPort">
+      <UniqueIdentifier>{51f6aa62-670d-425e-9d86-5f2218b8b986}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="kechengsheji.h">
@@ -43,6 +46,24 @@
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPort.cpp">
+      <Filter>CSerialPort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPortBase.cpp">
+      <Filter>CSerialPort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPortInfo.cpp">
+      <Filter>CSerialPort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPortInfoBase.cpp">
+      <Filter>CSerialPort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPortInfoWinBase.cpp">
+      <Filter>CSerialPort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPortWinBase.cpp">
+      <Filter>CSerialPort</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
