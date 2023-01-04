@@ -42,6 +42,13 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnBnClickedButton1();
-	afx_msg void OnCbnSelchangeCombo1();
-	CString PortID;
+//	afx_msg void OnCbnSelchangeCombo1();
+//	CString PortID;
+	afx_msg void OnBnClickedButton2();
+	CComboBox m_PortNr;
+	CComboBox m_BaudRate;
+	CComboBox m_Parity;
+	CComboBox m_Stop;
+	afx_msg void OnBnClickedButton3();
+	CButton m_OpenCloseCtrl;
 };

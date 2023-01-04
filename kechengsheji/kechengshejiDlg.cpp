@@ -57,7 +57,7 @@ END_MESSAGE_MAP()
 
 CkechengshejiDlg::CkechengshejiDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_KECHENGSHEJI_DIALOG, pParent)
-	, PortID(_T(""))
+
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -65,7 +65,12 @@ CkechengshejiDlg::CkechengshejiDlg(CWnd* pParent /*=nullptr*/)
 void CkechengshejiDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_CBString(pDX, IDC_COMBO1, PortID);
+	//  DDX_CBString(pDX, IDC_COMBO1, PortID);
+	DDX_Control(pDX, IDC_COMBO1, m_PortNr);
+	DDX_Control(pDX, IDC_COMBO2, m_BaudRate);
+	DDX_Control(pDX, IDC_COMBO3, m_Parity);
+	DDX_Control(pDX, IDC_COMBO4, m_Stop);
+	DDX_Control(pDX, IDC_BUTTON3, m_OpenCloseCtrl);
 }
 
 BEGIN_MESSAGE_MAP(CkechengshejiDlg, CDialogEx)
@@ -73,7 +78,9 @@ BEGIN_MESSAGE_MAP(CkechengshejiDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON1, &CkechengshejiDlg::OnBnClickedButton1)
-	ON_CBN_SELCHANGE(IDC_COMBO1, &CkechengshejiDlg::OnCbnSelchangeCombo1)
+//	ON_CBN_SELCHANGE(IDC_COMBO1, &CkechengshejiDlg::OnCbnSelchangeCombo1)
+ON_BN_CLICKED(IDC_BUTTON2, &CkechengshejiDlg::OnBnClickedButton2)
+ON_BN_CLICKED(IDC_BUTTON3, &CkechengshejiDlg::OnBnClickedButton3)
 END_MESSAGE_MAP()
 
 
@@ -164,11 +171,26 @@ HCURSOR CkechengshejiDlg::OnQueryDragIcon()
 
 
 
-void CkechengshejiDlg::OnBnClickedButton1()
+void CkechengshejiDlg::OnBnClickedButton1()    //打开串口按钮
 {
 	// TODO: 在此添加控件通知处理程序代码
-
-	m_serialPort.init(PortID);
+	char portName[256] = { 0 };
+	int SelBaudRate;
+	int SelParity;
+	int SelDataBits = 8;    //没有数据位下拉框，就写死在这里了
+	int SelStop;
+	CString temp;
+	m_PortNr.GetWindowText(temp);
+#ifdef UNICODE
+	strcpy_s(portName, 256, CW2A(temp.GetString()));
+#else
+	strcpy_s(portName, 256, temp.GetBuffer());
+#endif	
+	m_BaudRate.GetWindowText(temp);
+	SelBaudRate = _tstoi(temp);
+	SelParity = m_Parity.GetCurSel();
+	SelStop = m_Stop.GetCurSel();
+	m_serialPort.init(portName ,SelBaudRate, itas109::Parity(SelParity), itas109::DataBits(SelDataBits), itas109::StopBits(SelStop)); //TODO: 关联串口号，波特率等参数与多选框内选中值
 	m_serialPort.open();
 	if (m_serialPort.isOpen())
 	{
@@ -180,3 +202,57 @@ void CkechengshejiDlg::OnBnClickedButton1()
 	}
 }
 
+
+
+void CkechengshejiDlg::OnBnClickedButton2()    //关闭串口按钮
+{
+	// TODO: 在此添加控件通知处理程序代码
+	if (m_serialPort.isOpen())
+	{
+		m_serialPort.close();
+		MessageBox(_T("串口已关闭"));
+	}
+	else
+	{
+		MessageBox(_T("串口未打开"));
+	}
+}
+
+
+void CkechengshejiDlg::OnReceive()  //CSerialPort
+{
+	char* str = NULL;
+	str = new char[1024];
+	int iRet = m_serialPort.readAllData(str);
+
+	if (iRet > 0)
+	{
+		str[iRet] = '\0';
+		CString str1((char*)str);
+	}
+}
+
+void CkechengshejiDlg::OnBnClickedButton3()   //开始检测按钮
+{
+	// TODO: 在此添加控件通知处理程序代码
+	CString temp;
+	GetDlgItem(IDC_BUTTON3)->GetWindowText(temp);
+	if (temp == "开始检测") {
+		if (!m_serialPort.isOpen())
+		{
+			MessageBox(_T("串口未打开"));
+
+		}
+		m_OpenCloseCtrl.SetWindowText(_T("停止检测"));
+
+
+
+
+
+
+
+	}
+
+
+
+}

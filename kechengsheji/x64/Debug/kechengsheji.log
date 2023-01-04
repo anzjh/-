@@ -1,3 +1,4 @@
-﻿  kechengshejiDlg.cpp
-kechengshejiDlg.obj : error LNK2001: 无法解析的外部符号 "public: void __cdecl CkechengshejiDlg::OnCbnSelchangeCombo1(void)" (?OnCbnSelchangeCombo1@CkechengshejiDlg@@QEAAXXZ)
-D:\Source Code\-\x64\Debug\kechengsheji.exe : fatal error LNK1120: 1 个无法解析的外部命令
+﻿  kechengsheji.cpp
+  kechengshejiDlg.cpp
+  正在生成代码...
+  kechengsheji.vcxproj -> D:\Source Code\-\x64\Debug\kechengsheji.exe
