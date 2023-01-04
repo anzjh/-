@@ -174,11 +174,11 @@ HCURSOR CkechengshejiDlg::OnQueryDragIcon()
 void CkechengshejiDlg::OnBnClickedButton1()    //打开串口按钮
 {
 	// TODO: 在此添加控件通知处理程序代码
-	char portName[256] = { 0 };
-	int SelBaudRate;
+	char portName[256] = { 0 };  //串口名使用 const char*
+	int SelBaudRate = 9600;
 	int SelParity;
-	int SelDataBits = 8;    //没有数据位下拉框，就写死在这里了
-	int SelStop;
+	int SelDataBits = 8;    //没有数据位下拉框，就写死在这里了，需要一个数据位的下拉框才能改这个设置
+	int SelStop = 1;
 	CString temp;
 	m_PortNr.GetWindowText(temp);
 #ifdef UNICODE
@@ -190,7 +190,7 @@ void CkechengshejiDlg::OnBnClickedButton1()    //打开串口按钮
 	SelBaudRate = _tstoi(temp);
 	SelParity = m_Parity.GetCurSel();
 	SelStop = m_Stop.GetCurSel();
-	m_serialPort.init(portName ,SelBaudRate, itas109::Parity(SelParity), itas109::DataBits(SelDataBits), itas109::StopBits(SelStop)); //TODO: 关联串口号，波特率等参数与多选框内选中值
+	m_serialPort.init(portName ,SelBaudRate, itas109::Parity(SelParity), itas109::DataBits(SelDataBits), itas109::StopBits(SelStop)); //初始化串口，默认缺省值在之前定义
 	m_serialPort.open();
 	if (m_serialPort.isOpen())
 	{
@@ -219,7 +219,7 @@ void CkechengshejiDlg::OnBnClickedButton2()    //关闭串口按钮
 }
 
 
-void CkechengshejiDlg::OnReceive()  //CSerialPort
+void CkechengshejiDlg::OnReceive()  //CSerialPort的接收处理代码
 {
 	char* str = NULL;
 	str = new char[1024];
@@ -245,7 +245,7 @@ void CkechengshejiDlg::OnBnClickedButton3()   //开始检测按钮
 		}
 		m_OpenCloseCtrl.SetWindowText(_T("停止检测"));
 
-
+		//TODO:代串口通讯数据格式
 
 
 

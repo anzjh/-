@@ -53,22 +53,22 @@
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPort.cpp">
+    <ClCompile Include="..\CSerialPort\src\SerialPort.cpp">
       <Filter>CSerialPort</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPortBase.cpp">
+    <ClCompile Include="..\CSerialPort\src\SerialPortBase.cpp">
       <Filter>CSerialPort</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPortInfo.cpp">
+    <ClCompile Include="..\CSerialPort\src\SerialPortInfo.cpp">
       <Filter>CSerialPort</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPortInfoBase.cpp">
+    <ClCompile Include="..\CSerialPort\src\SerialPortInfoBase.cpp">
       <Filter>CSerialPort</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPortInfoWinBase.cpp">
+    <ClCompile Include="..\CSerialPort\src\SerialPortInfoWinBase.cpp">
       <Filter>CSerialPort</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPortWinBase.cpp">
+    <ClCompile Include="..\CSerialPort\src\SerialPortWinBase.cpp">
       <Filter>CSerialPort</Filter>
     </ClCompile>
   </ItemGroup>

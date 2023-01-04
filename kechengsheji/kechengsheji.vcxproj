@@ -195,22 +195,22 @@
     <ClInclude Include="csv.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPort.cpp">
+    <ClCompile Include="..\CSerialPort\src\SerialPort.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPortBase.cpp">
+    <ClCompile Include="..\CSerialPort\src\SerialPortBase.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPortInfo.cpp">
+    <ClCompile Include="..\CSerialPort\src\SerialPortInfo.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPortInfoBase.cpp">
+    <ClCompile Include="..\CSerialPort\src\SerialPortInfoBase.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPortInfoWinBase.cpp">
+    <ClCompile Include="..\CSerialPort\src\SerialPortInfoWinBase.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\..\kechengsheji\CSerialPort\src\SerialPortWinBase.cpp">
+    <ClCompile Include="..\CSerialPort\src\SerialPortWinBase.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="kechengsheji.cpp" />
